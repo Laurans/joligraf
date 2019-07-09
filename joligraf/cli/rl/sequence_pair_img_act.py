@@ -29,7 +29,7 @@ def main(data_sequence_folder: str, limit: int, start: int, out: str):
 
     with_slides = {}
     for idx, filepath in enumerate(tqdm(images_filepaths[start:limit])):
-        dataframe = dict([(key, str(value[idx])) for key, value in datasource.items()])
+        dataframe = dict([(key, str(value[start + idx])) for key, value in datasource.items()])
 
         image = hv.RGB.load_image(str(filepath))
         image.opts(title=f"Frame #{idx+1}")
